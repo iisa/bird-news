@@ -1,10 +1,11 @@
 import { LitElement, html, css } from 'lit';
 import { property } from 'lit/decorators.js';
 
-const logo = new URL('../../assets/open-wc-logo.svg', import.meta.url).href;
+const birdNewsLogo = new URL('../../assets/bird_news_3.png', import.meta.url)
+  .href;
 
 export class BirdNewsCompany extends LitElement {
-  @property({ type: String }) title = 'My app';
+  @property({ type: String }) title = 'Bird News Company';
 
   static styles = css`
     :host {
@@ -15,10 +16,10 @@ export class BirdNewsCompany extends LitElement {
       justify-content: flex-start;
       font-size: calc(10px + 2vmin);
       color: #1a2b42;
-      max-width: 960px;
+      max-width: 100%;
       margin: 0 auto;
       text-align: center;
-      background-color: var(--bird-news-company-background-color);
+      background-color: var(--bird-news-company-background-color, #fff);
     }
 
     main {
@@ -26,17 +27,15 @@ export class BirdNewsCompany extends LitElement {
     }
 
     .logo {
-      margin-top: 36px;
-      animation: app-logo-spin infinite 20s linear;
+      margin: 10px auto;
+      max-height: 400px;
+      padding: 10px;
+      border: 1px solid #ccc;
     }
 
-    @keyframes app-logo-spin {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
+    .logo img {
+      max-height: inherit;
+      border: 1px solid #ccc;
     }
 
     .app-footer {
@@ -52,28 +51,15 @@ export class BirdNewsCompany extends LitElement {
   render() {
     return html`
       <main>
-        <div class="logo"><img alt="open-wc logo" src=${logo} /></div>
+        <div class="logo">
+          <img alt="Bird News Company logo" src=${birdNewsLogo} />
+        </div>
         <h1>${this.title}</h1>
-
-        <p>Edit <code>src/BirdNewsCompany.ts</code> and save to reload.</p>
-        <a
-          class="app-link"
-          href="https://open-wc.org/guides/developing-components/code-examples"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Code examples
-        </a>
+        <p>Exclusive content</p>
       </main>
 
       <p class="app-footer">
-        🚽 Made with love by
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://github.com/open-wc"
-          >open-wc</a
-        >.
+        Nicodemus Velasco &copy; ${new Date().getFullYear()}
       </p>
     `;
   }
